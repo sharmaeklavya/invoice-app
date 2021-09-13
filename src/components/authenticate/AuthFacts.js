@@ -12,7 +12,7 @@ function AuthFacts() {
 
   useEffect(() => {
     axios
-      .get("http://numbersapi.com/random")
+      .get("https://numbersapi.com/random")
       .then((res) => setQuotes(res.data))
       .catch((err) => console.log(err));
   }, []);
