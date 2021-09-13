@@ -38,7 +38,7 @@ function Login() {
     if (res.status === 200) {
       localStorage.setItem("__lt", Date.now());
       history.push("/dashboard");
-      window.location.reload();
+      // window.location.reload();
     } else {
       alert.show(res.data, {
         type: types.ERROR,
