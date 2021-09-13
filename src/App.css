@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+body {
+  min-height: 100% !important;
+  color: rgba(30, 58, 138) !important;
+}
+
+#auth__background {
+  height: 92vmin;
+  background-color: rgba(17, 24, 39);
+  display: grid;
+  place-content: center;
+  color: aliceblue;
+  padding: 1.5rem;
+  visibility: hidden;
+}
+
+.auth__vessel {
+  height: 100%;
+  margin: 2rem auto;
+  background-color: white;
+  position: relative;
+}
+
+.auth__vessel form {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+}
+
+.auth__legend {
+  margin-top: 0;
+  padding-top: 0.5rem;
+  font-family: "Kaushan Script", cursive;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+.dash__vessel {
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+}
+
+.create__invoice__form {
+  height: 78vh;
+  padding: 2rem;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.edit__container {
+  height: 78vh;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.accordian {
+  padding: 1rem;
+  display: grid;
+  place-content: center;
+  background-color: rgba(37, 99, 235);
+}
+
+.accordian__btn {
+  width: 100px;
+  margin: 1rem auto;
+}
+
+.accordian__btn::after {
+  content: "\25be";
+  float: left;
+  transform: scale(1.5);
+  color: rgba(30, 58, 138);
+}
+
+.accordian__btn--active::after {
+  content: "\25b4";
+}
+
+.accordian__content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s;
+}
+
+.edit__label {
+  min-width: 10%;
+  background-color: #ffc107;
+  font-size: 0.875em;
+  margin: 0.75rem 0;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.edit__label::after {
+  content: "\25be";
+  position: absolute;
+  transform: translateY(-50%);
+  top: 25%;
+  right: 0px;
+  width: 12px;
+  height: 6px;
+  transition: transform 0.4s;
+}
+
+.edit__content {
+  line-height: 1.6;
+  display: none;
+}
+
+.edit__btn {
+  display: none;
+}
+
+.edit__btn:checked ~ .edit__content {
+  display: block;
+  transition: opacity 0.85s linear;
+}
+
+.edit__btn:checked ~ .edit__label {
+  color: azure;
+  background-color: #198754;
+}
+
+.edit__btn:checked ~ .edit__label::after {
+  content: "\25b4";
+}
+
+.cancel__btn {
+  font-size: 0.875em;
+  font-weight: 400;
+  margin-left: 8rem;
+  color: #fff;
+  background-color: #6c757d;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+.delete__btn {
+  font-size: 0.875em;
+  font-weight: 300;
+  background-color: #dc3545;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+.logout {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.label__text {
+  display: block;
+  text-align: right;
+}
+
+.total__stats {
+  width: 200px;
+  height: 200px;
+  padding: 1rem;
+  margin: auto;
+  border: 2px solid rgba(30, 58, 138);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+p a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+li a:hover {
+  color: lightyellow;
+}
+
+.font__icon {
+  font-size: 1.2rem;
+  font-weight: 100;
+  cursor: pointer;
+  margin: auto 5px;
+}
+
+#notify {
+  position: absolute;
+  top: 5.5%;
+  left: 0;
+  right: 0;
+  height: 50px;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 5px;
+  opacity: 1;
+  -webkit-transition: opacity 0.85s linear;
+  -moz-transition: opacity 0.85s linear;
+  -o-transition: opacity 0.85s linear;
+  transition: opacity 0.85s linear;
+}
+
+.hidden {
+  display: none !important;
+  opacity: 0;
+  transition: opacity 0.85s linear;
+}
+
+@media (min-width: 768px) {
+  body {
+    overflow-y: hidden;
+  }
+  #auth__background {
+    visibility: visible;
+  }
+  .navbar {
+    min-height: 7vh;
+  }
+  .accordian,
+  .dash__vessel {
+    min-height: 93vh;
+  }
+  .edit__container {
+    width: 900px;
+  }
+}
+
+/* Login/Register/ Auth Animation */
+slide-enter,
+.slide-exit {
+  transition: transform 100ms linear;
+}
+
+.slide-enter {
+  transform: translate(-100%);
+  opacity: 0;
+}
+
+.slide-enter.slide-enter-active {
+  transform: translate(0%);
+}
+
+.slide-exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  transform: translate(0%);
+  opacity: 1;
+}
+
+.slide-exit-active {
+  transform: translate(100%);
+}
