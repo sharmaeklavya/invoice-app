@@ -50,4 +50,6 @@ If a user needs to get a new password, he/she can request admin or the user can 
 
 ### Hope, the viewers find it useful
 
+Live Preview - Invoice App [https://proj-invoice.netlify.app]
+
 If yes, please request for an admin login credentials. Thank you!
