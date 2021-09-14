@@ -23,20 +23,20 @@ function Profile() {
     if (user.role === "admin") {
       setUserInfo({
         ...user,
-        userAccess: "Create, Read, Update and Delete",
-        invoiceAccess: "Create, Read, Update and Delete",
+        userAccess: "create, view, update and delete",
+        invoiceAccess: "create, view, update and delete",
       });
     } else if (user.role === "manager") {
       setUserInfo({
         ...user,
-        userAccess: "Create, Read, and Update",
-        invoiceAccess: "Create, Read, and Update",
+        userAccess: "view only",
+        invoiceAccess: "create, view, and update",
       });
     } else {
       setUserInfo({
         ...user,
-        userAccess: "Create and Read",
-        invoiceAccess: "Create and Read",
+        userAccess: "view only",
+        invoiceAccess: "create and view",
       });
     }
   }
