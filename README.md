@@ -1,5 +1,7 @@
 # Getting Started with Invoice App
 
+### [Invoice App Live](https://proj-invoice.netlify.app)
+
 ### Technologies/ Languages used for this project -
 
 React for Frontend
