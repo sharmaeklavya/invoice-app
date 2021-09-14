@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import axios from "axios";
+import Numbers from "./NumberFacts";
 
 function AuthFacts() {
   const [quotes, setQuotes] = useState();
@@ -11,10 +11,8 @@ function AuthFacts() {
   });
 
   useEffect(() => {
-    axios
-      .get("http://numbersapi.com/random")
-      .then((res) => setQuotes(res.data))
-      .catch((err) => console.log(err));
+    const rNum = Math.floor(Math.random() * Numbers.length);
+    setQuotes(Numbers[rNum].facts);
   }, []);
 
   return (
