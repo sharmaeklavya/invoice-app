@@ -48,6 +48,6 @@ A user can view his/ her account details by clicking on profile next to the time
 
 If a user needs to get a new password, he/she can request admin or the user can do it from the login page.
 
-### Hope, the viewer can find it useful
+### Hope, the viewers find it useful
 
-If yes, please request for a admin login credentials. Thank you!
+If yes, please request for an admin login credentials. Thank you!
