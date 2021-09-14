@@ -40,7 +40,7 @@ function ResetPass() {
       <form className="row g-3" onSubmit={handleSubmit}>
         <h1 className="auth__legend">Trouble logging in?</h1>
         <p className="text-center pb-0">
-          Enter your email address to veify it's you.
+          Enter your email to veify it's really you.
         </p>
 
         <div className="col-12">

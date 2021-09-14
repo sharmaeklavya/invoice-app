@@ -12,7 +12,7 @@ function PrivateRoute({ component: Component, ...rest }) {
     (async () => {
       try {
         const res = await axios.post(
-          "https://node-invoice.herokuapp.com/refresh_token",
+          "http://localhost:4500/refresh_token",
           {},
           { withCredentials: true }
         );

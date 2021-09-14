@@ -38,6 +38,7 @@ function Login() {
       history.push("/dashboard");
       window.location.reload();
     } else {
+      console.log(res);
       alert.show(res.data, {
         type: types.ERROR,
         position: positions.TOP_CENTER,
@@ -48,6 +49,7 @@ function Login() {
       });
     }
   };
+
   return (
     <form className="row g-3" onSubmit={handleSubmit}>
       <h1 className="auth__legend">Login</h1>
