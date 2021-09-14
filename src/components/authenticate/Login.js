@@ -18,9 +18,9 @@ function Login() {
             { email: userEmail, password: userPassword },
             { withCredentials: true }
           )
-          .then((res) => handleError(res))
+          .then((res) => handleSubmitError(res))
           .catch(function (err) {
-            handleError(err.response);
+            handleSubmitError(err.response);
           })
       : alert.show("email/ password cannot be blank", {
           type: types.ERROR,
@@ -32,13 +32,20 @@ function Login() {
         });
   };
 
-  const handleError = (res) => {
+  const handleSubmitError = (res) => {
     if (res.status === 200) {
       localStorage.setItem("__lt", Date.now());
       history.push("/dashboard");
       window.location.reload();
     } else {
-      console.log(res);
+      alert.show(res.data, {
+        type: types.ERROR,
+        position: positions.TOP_CENTER,
+        containerStyle: {
+          offset: "150px",
+          padding: "150px",
+        },
+      });
     }
   };
   return (
