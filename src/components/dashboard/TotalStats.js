@@ -6,7 +6,7 @@ function TotalStats() {
   const { refToken } = useContext(UserContext);
   const [invoiceData, setInvoiceData] = useState([]);
 
-  // for getting all the invoice informtion from the server
+  // attaching refresh token with request for validation
   axios.interceptors.request.use(
     (config) => {
       if (refToken) config.headers.authorization = `Bearer ${refToken}`;
