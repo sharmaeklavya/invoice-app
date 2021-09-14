@@ -386,7 +386,9 @@ function UpdateUser() {
           <p className="lead">
             Please wait a few seconds while we display the users here.
           </p>
-          <p>If you still do not see any users, you might wanna create one.</p>
+          <p>
+            If you still do not see any users, you might wanna create one first.
+          </p>
         </div>
       )}
     </div>
