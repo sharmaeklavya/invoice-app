@@ -1,6 +1,6 @@
 # Getting Started with Invoice App
 
-### [Invoice App Live](https://proj-invoice.netlify.app)
+### [Live preview - Invoice App](https://proj-invoice.netlify.app)
 
 ### Technologies/ Languages used for this project -
 
