@@ -43,7 +43,7 @@ function UpdatePass() {
         )
         .then((res) => {
           handleSubmitError(res);
-          history.push("/");
+          history.push("/user");
         })
         .catch((err) => handleSubmitError(err.response));
     } else {

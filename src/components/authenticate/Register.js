@@ -86,7 +86,7 @@ function Register() {
       <div className="col-md-12">
         <p className="mt-3 mb-3 text-center">
           <span>Already have an account?&nbsp;</span>
-          <Link to="/">Login</Link>
+          <Link to="/user">Login</Link>
         </p>
       </div>
     </>

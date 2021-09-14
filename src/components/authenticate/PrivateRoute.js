@@ -12,7 +12,7 @@ function PrivateRoute({ component: Component, ...rest }) {
     (async () => {
       try {
         const res = await axios.post(
-          "http://localhost:4500/refresh_token",
+          "https://node-invoice.herokuapp.com/refresh_token",
           {},
           { withCredentials: true }
         );
@@ -38,7 +38,7 @@ function PrivateRoute({ component: Component, ...rest }) {
       </div>
     );
 
-  if (isLoggedIn === 0) return <Redirect to="/" />;
+  if (isLoggedIn === 0) return <Redirect to="/user/login" />;
 
   if (isLoggedIn === 1)
     return <Route {...rest} render={(props) => <Component {...props} />} />;

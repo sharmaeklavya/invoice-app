@@ -17,7 +17,7 @@ import axios from "axios";
 
 function Dashboard() {
   const history = useHistory();
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const [timer, setTimer] = useState();
 
   // use effect for updating current time
@@ -76,7 +76,7 @@ function Dashboard() {
   //handling log out
   const handleLogout = () => {
     axios.post("https://node-invoice.herokuapp.com/logout").then((res) => {
-      if (res.status === 200) history.push("/");
+      if (res.status === 200) history.push("/user/login");
       localStorage.removeItem("__lt");
     });
   };
@@ -132,12 +132,12 @@ function Dashboard() {
                     style={{ right: 0, left: "auto" }}
                   >
                     <li>
-                      <Link className="dropdown-item" to={`${url}/profile`}>
+                      <Link className="dropdown-item" to={`/profile`}>
                         Profile
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to={`${url}/setting`}>
+                      <Link className="dropdown-item" to={`/setting`}>
                         Setting
                       </Link>
                     </li>
@@ -162,10 +162,10 @@ function Dashboard() {
             <div className="accordian__content">
               <ul className="text-light">
                 <li className="pb-2">
-                  <Link to={`${url}/create-user`}>Create user</Link>
+                  <Link to="/create-user">Create user</Link>
                 </li>
                 <li className="pb-2">
-                  <Link to={`${url}/update-user`}>Update user</Link>
+                  <Link to="/update-user">Update user</Link>
                 </li>
               </ul>
             </div>
@@ -179,10 +179,10 @@ function Dashboard() {
             <div className="accordian__content">
               <ul className="text-light">
                 <li className="pb-2">
-                  <Link to={`${url}/create-invoice`}>Create invoice</Link>
+                  <Link to="/create-invoice">Create invoice</Link>
                 </li>
                 <li className="pb-2">
-                  <Link to={`${url}/update-invoice`}>Update invoice</Link>
+                  <Link to="/update-invoice">Update invoice</Link>
                 </li>
               </ul>
             </div>
@@ -201,30 +201,12 @@ function Dashboard() {
         <div className="col-md-10">
           <div className="dash__vessel">
             <Switch>
-              <Route path={`${path}/profile`} component={Profile} exact />
-              <Route path={`${path}/setting`} component={Setting} exact />
-              <Route
-                path={`${path}/create-user`}
-                component={CreateUser}
-                exact
-              />
-              <Route
-                path={`${path}/update-user`}
-                component={UpdateUser}
-                exact
-              />
-
-              <Route
-                path={`${path}/create-invoice`}
-                component={CreateInvoice}
-                exact
-              />
-              <Route
-                path={`${path}/update-invoice`}
-                component={UpdateInvoice}
-                exact
-              />
-
+              <Route path="/profile" component={Profile} exact />
+              <Route path="/setting" component={Setting} exact />
+              <Route path="/create-user" component={CreateUser} exact />
+              <Route path="/update-user" component={UpdateUser} exact />
+              <Route path="/create-invoice" component={CreateInvoice} exact />
+              <Route path="/update-invoice" component={UpdateInvoice} exact />
               <Route path={`${path}`} component={TotalStats} exact />
             </Switch>
           </div>

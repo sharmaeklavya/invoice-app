@@ -35,10 +35,9 @@ function Login() {
   const handleSubmitError = (res) => {
     if (res.status === 200) {
       localStorage.setItem("__lt", Date.now());
-      history.push("/dashboard");
+      history.push("/");
       window.location.reload();
     } else {
-      console.log(res);
       alert.show(res.data, {
         type: types.ERROR,
         position: positions.TOP_CENTER,
@@ -54,7 +53,7 @@ function Login() {
     <form className="row g-3" onSubmit={handleSubmit}>
       <h1 className="auth__legend">Login</h1>
       <div className="col-md-3 mb-3">
-        <label htmlFor="inputEmail1" className="form-label">
+        <label htmlFor="inputEmail10" className="form-label">
           Email
         </label>
       </div>
@@ -62,14 +61,14 @@ function Login() {
         <input
           type="email"
           className="form-control"
-          id="inputEmail1"
+          id="inputEmail10"
           name="email"
           placeholder="abc@example.com"
           onChange={(e) => setUserEmail(e.target.value)}
         />
       </div>
       <div className="col-md-3 mb-3">
-        <label htmlFor="inputPassword1" className="form-label">
+        <label htmlFor="inputPassword10" className="form-label">
           Password
         </label>
       </div>
@@ -77,7 +76,7 @@ function Login() {
         <input
           type="password"
           className="form-control"
-          id="inputPassword1"
+          id="inputPassword10"
           name="password"
           placeholder="******"
           onChange={(e) => setUserPassword(e.target.value)}
@@ -91,7 +90,7 @@ function Login() {
       <div className="col-md-12">
         <p className="mt-3 mb-2 text-center">
           <span>Forgot password?&nbsp;</span>
-          <Link to="/reset">Reset Now</Link>
+          <Link to="/user/reset">Reset Now</Link>
         </p>
       </div>
     </form>

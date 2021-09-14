@@ -7,7 +7,7 @@ function AuthNavbar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow ">
       <div className="container">
-        <Link to="/dashboard" className="navbar-brand auth__legend">
+        <Link to="/" className="navbar-brand auth__legend">
           {props.brand}
         </Link>
         <button

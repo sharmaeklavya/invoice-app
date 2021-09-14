@@ -17,8 +17,8 @@ function App() {
     <AlertProvider template={AlertTemplate} {...options}>
       <Router>
         <Switch>
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <Route path="/" component={Authenticate} />
+          <Route path="/user" component={Authenticate} />
+          <PrivateRoute path="/" component={Dashboard} />
         </Switch>
       </Router>
     </AlertProvider>

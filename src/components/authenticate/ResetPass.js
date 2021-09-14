@@ -26,7 +26,7 @@ function ResetPass() {
         type: types.SUCCESS,
         position: positions.TOP_RIGHT,
       });
-      history.push("/");
+      history.push("/user");
     } else {
       alert.show(res.data, {
         type: types.ERROR,
@@ -71,7 +71,7 @@ function ResetPass() {
       <div className="col-md-12">
         <p className="mt-3 mb-2 text-center">
           <span>Is this a wrong page?&nbsp;</span>
-          <Link to="/">Login</Link>
+          <Link to="/user/login">Login</Link>
         </p>
       </div>
     </>
