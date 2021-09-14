@@ -6,34 +6,30 @@ import axios from "axios";
 function Login() {
   const alert = useAlert();
   const history = useHistory();
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-
-  const handleUserInputs = (e) => {
-    const value = e.target.value;
-    setUserInfo({ ...userInfo, [e.target.name]: value });
-  };
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userInfo.email !== "" && userInfo.password !== "") {
-      axios
-        .post("https://node-invoice.herokuapp.com", userInfo, {
-          withCredentials: true,
-        })
-        .then((res) => handleError(res))
-        .catch(function (err) {
-          handleError(err.response);
+    userEmail !== "" && userPassword !== ""
+      ? axios
+          .post(
+            "https://node-invoice.herokuapp.com",
+            { email: userEmail, password: userPassword },
+            { withCredentials: true }
+          )
+          .then((res) => handleError(res))
+          .catch(function (err) {
+            handleError(err.response);
+          })
+      : alert.show("email/ password cannot be blank", {
+          type: types.ERROR,
+          position: positions.TOP_CENTER,
+          containerStyle: {
+            offset: "150px",
+            padding: "150px",
+          },
         });
-    } else {
-      alert.show("email/ password cannot be blank", {
-        type: types.ERROR,
-        position: positions.TOP_CENTER,
-        containerStyle: {
-          offset: "150px",
-          padding: "150px",
-        },
-      });
-    }
   };
 
   const handleError = (res) => {
@@ -42,17 +38,9 @@ function Login() {
       history.push("/dashboard");
       window.location.reload();
     } else {
-      alert.show(res.data, {
-        type: types.ERROR,
-        position: positions.TOP_CENTER,
-        containerStyle: {
-          offset: "150px",
-          padding: "150px",
-        },
-      });
+      console.log(res);
     }
   };
-
   return (
     <form className="row g-3" onSubmit={handleSubmit}>
       <h1 className="auth__legend">Login</h1>
@@ -67,9 +55,8 @@ function Login() {
           className="form-control"
           id="inputEmail1"
           name="email"
-          value={userInfo.email}
           placeholder="abc@example.com"
-          onChange={handleUserInputs}
+          onChange={(e) => setUserEmail(e.target.value)}
         />
       </div>
       <div className="col-md-3 mb-3">
@@ -83,9 +70,8 @@ function Login() {
           className="form-control"
           id="inputPassword1"
           name="password"
-          value={userInfo.password}
           placeholder="******"
-          onChange={handleUserInputs}
+          onChange={(e) => setUserPassword(e.target.value)}
         />
       </div>
       <div className="col-12 text-center">

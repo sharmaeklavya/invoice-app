@@ -80,7 +80,7 @@ function Profile() {
               htmlFor="disabledTextInput5"
               className="form-label label__text"
             >
-              User Type
+              User Role
             </label>
             <input
               type="text"
@@ -95,7 +95,7 @@ function Profile() {
               htmlFor="disabledTextInput3"
               className="form-label label__text"
             >
-              User Acces
+              User Access Type
             </label>
             <input
               type="text"
@@ -110,7 +110,7 @@ function Profile() {
               htmlFor="disabledTextInput4"
               className="form-label label__text"
             >
-              Invoice Access
+              Invoice Access Type
             </label>
             <input
               type="text"
