@@ -57,7 +57,7 @@ function Dashboard() {
       // Returning formatted
       return hours + ":" + minutes + ":" + seconds;
     } else {
-      history.push("/");
+      history.push("/user/login");
     }
   }
 
