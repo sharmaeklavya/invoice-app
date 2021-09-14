@@ -722,8 +722,7 @@ function UpdateInvoice() {
             Please wait a few seconds while we display the invoices here.
           </p>
           <p>
-            If you still do not see any invoices here, please create one to see
-            / edit or update.
+            If you still do not see any invoices, you might wanna create one.
           </p>
         </div>
       )}
