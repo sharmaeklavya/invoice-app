@@ -61,9 +61,10 @@ function UpdateInvoice() {
         })
         .then((res) => setInvoiceData(res.data))
         .catch(function (err) {
-          console.log(err.response);
+          handleSubmitError(err.response);
         });
     }, 500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // for setting up product information
@@ -147,7 +148,6 @@ function UpdateInvoice() {
         handleSubmitError(res);
       }
     } catch (err) {
-      console.log(err.response);
       handleSubmitError(err.response);
     }
   };

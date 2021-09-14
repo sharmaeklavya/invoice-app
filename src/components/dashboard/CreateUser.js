@@ -42,7 +42,6 @@ function CreateUser() {
         handleSubmitError(res.status);
       }
     } catch (err) {
-      console.log(err.response);
       handleSubmitError(err.response);
     }
   };

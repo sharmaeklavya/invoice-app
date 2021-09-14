@@ -44,9 +44,10 @@ function UpdateUser() {
         )
         .then((res) => setUserData(res.data))
         .catch(function (err) {
-          console.log(err.response);
+          handleSubmitError(err.response);
         });
     }, 500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleUserInputs = (e) => {
@@ -74,7 +75,6 @@ function UpdateUser() {
         handleSubmitError(res.status);
       }
     } catch (err) {
-      console.log(err.response);
       handleSubmitError(err.response);
     }
   };
@@ -101,7 +101,6 @@ function UpdateUser() {
         handleSubmitError(res.status);
       }
     } catch (err) {
-      console.log(err.response);
       handleSubmitError(err.response);
     }
   };

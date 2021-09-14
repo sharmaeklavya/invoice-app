@@ -140,7 +140,6 @@ function CreateInvoice() {
       );
       handleSubmitError(res);
     } catch (err) {
-      console.log(err.response);
       handleSubmitError(err.response);
     }
   };
