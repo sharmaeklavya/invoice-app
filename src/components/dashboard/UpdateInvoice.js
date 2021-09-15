@@ -1,9 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { useAlert, positions, types } from "react-alert";
 import UserContext from "../authenticate/UserContext";
+import { useReactToPrint } from "react-to-print";
 import axios from "axios";
 
 function UpdateInvoice() {
+  const editForm = useRef(null);
   const alert = useAlert(null);
   const { refToken } = useContext(UserContext);
   const [disabled, setDisabled] = useState(true);
@@ -199,16 +201,21 @@ function UpdateInvoice() {
     setDisabled(false);
   };
 
+  const pdfGenerator = useReactToPrint({
+    content: () => editForm.current,
+  });
+
   return (
     <div className="edit__container">
       <div className="card">
         <div className="card-body bg-secondary text-light">
           <div className="row mx-auto">
             <small className="col-sm-3">Client Name</small>
-            <small className="col-sm-3">Client Email</small>
+            <small className="col-sm-2">Client Email</small>
             <small className="col-sm-2">Invoice number</small>
             <small className="col-sm-2">Payment due date</small>
             <small className="col-sm-2">Total Payable</small>
+            <small className="col-sm-1">PDF</small>
           </div>
         </div>
       </div>
@@ -218,12 +225,17 @@ function UpdateInvoice() {
             <div className="card-body" style={{ placeItems: "center" }}>
               <div className="row mx-auto">
                 <small className="col-sm-3">{invoice.consigneeName}</small>
-                <small className="col-sm-3">{invoice.consigneeEmail}</small>
-                <small className="col-sm-2">{invoice.invoiceNumber}</small>
+                <small className="col-sm-2">{invoice.consigneeEmail}</small>
+                <small className="col-sm-2 text-center">
+                  {invoice.invoiceNumber}
+                </small>
                 <small className="col-sm-2">
                   {invoice.invoiceDueDate.split("T")[0]}
                 </small>
                 <small className="col-sm-2">{invoice.totalAmount}</small>
+                <small className="col-sm-1 pdf__btn" onClick={pdfGenerator}>
+                  PDF
+                </small>
                 <div className="col-sm-12">
                   <input
                     id={index}
@@ -281,6 +293,7 @@ function UpdateInvoice() {
                   {/*  */}
 
                   <form
+                    ref={editForm}
                     className="edit__content"
                     onSubmit={handleSubmit}
                     style={{ maxWidth: "900px" }}
