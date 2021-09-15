@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { useAlert, positions, types } from "react-alert";
 import UserContext from "../authenticate/UserContext";
-import { useReactToPrint } from "react-to-print";
+import GeneratePdf from "./DownloadPdf";
 import axios from "axios";
 
 function UpdateInvoice() {
@@ -201,21 +201,17 @@ function UpdateInvoice() {
     setDisabled(false);
   };
 
-  const pdfGenerator = useReactToPrint({
-    content: () => editForm.current,
-  });
-
   return (
     <div className="edit__container">
       <div className="card">
         <div className="card-body bg-secondary text-light">
           <div className="row mx-auto">
-            <small className="col-sm-3">Client Name</small>
+            <small className="col-sm-2">Client Name</small>
             <small className="col-sm-2">Client Email</small>
             <small className="col-sm-2">Invoice number</small>
             <small className="col-sm-2">Payment due date</small>
             <small className="col-sm-2">Total Payable</small>
-            <small className="col-sm-1">PDF</small>
+            <small className="col-sm-2">Download</small>
           </div>
         </div>
       </div>
@@ -224,17 +220,15 @@ function UpdateInvoice() {
           <div className="card" key={index}>
             <div className="card-body" style={{ placeItems: "center" }}>
               <div className="row mx-auto">
-                <small className="col-sm-3">{invoice.consigneeName}</small>
+                <small className="col-sm-2">{invoice.consigneeName}</small>
                 <small className="col-sm-2">{invoice.consigneeEmail}</small>
-                <small className="col-sm-2 text-center">
-                  {invoice.invoiceNumber}
-                </small>
+                <small className="col-sm-2">{invoice.invoiceNumber}</small>
                 <small className="col-sm-2">
                   {invoice.invoiceDueDate.split("T")[0]}
                 </small>
                 <small className="col-sm-2">{invoice.totalAmount}</small>
-                <small className="col-sm-1 pdf__btn" onClick={pdfGenerator}>
-                  PDF
+                <small className="col-sm-2">
+                  <GeneratePdf data={invoiceData} target={index} />
                 </small>
                 <div className="col-sm-12">
                   <input
