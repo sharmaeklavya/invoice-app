@@ -42,6 +42,8 @@ A Manager user can generate invoices, view and update but cannot delete them.
 
 An Executive level user can only generate and view invoices.
 
+Any user can download invoices in PDF format irresepective of their access privilege to the app.
+
 ## `Other functions`
 
 Every user has 15 minutes of session time - after that system will log the user out.
