@@ -18,7 +18,7 @@ An invoice is a document given to the buyer by the seller to collect payment. It
 
 ## `Purpose of this App`
 
-To generate invoices for the clients.
+To generate invoices for the clients. You can also download them as PDF.
 
 ## `Functions of this App`
 
