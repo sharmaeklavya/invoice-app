@@ -5,24 +5,34 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 function GeneratePdf(props) {
   const pdfGenerator = () => {
-    const invoiceData = props.data;
     const targetInvoice = props.target;
-    const resultedData = invoiceData.filter((data, i) => i === targetInvoice);
+    const invoiceData = props.data.filter((data, i) => i === targetInvoice);
 
-    resultedData.forEach((inv) => {
+    let items = [];
+    for (let i in invoiceData[0].products) {
+      const row = [];
+      row.push(invoiceData[0].products[i].description);
+      row.push(invoiceData[0].products[i].rate);
+      row.push(invoiceData[0].products[i].qty);
+      row.push(invoiceData[0].products[i].amount);
+      row.push(invoiceData[0].products[i].taxPct);
+      items.push(row);
+    }
+
+    invoiceData.forEach((inv, index) => {
       const docDefinition = {
         content: [
           {
             alignment: "center",
-            text: `Invoice No ${inv.invoiceNumber}`,
-            fontSize: 22,
+            text: `Invoice No # ${inv.invoiceNumber}`,
+            fontSize: 16,
             bold: true,
           },
-          "\n\n\n",
+          "\n\n",
           {
             columns: [
-              { text: "Seller Information ", bold: true, fontSize: 16 },
-              { text: "Buyer Information ", bold: true, fontSize: 16 },
+              { text: "Seller Information ", bold: true, fontSize: 14 },
+              { text: "Buyer Information ", bold: true, fontSize: 14 },
             ],
           },
           "\n\n",
@@ -73,7 +83,7 @@ function GeneratePdf(props) {
               { text: inv.consigneePhoneNumber, bold: true, width: 100 },
             ],
           },
-          "\n\n",
+          "\n",
           {
             columns: [
               { text: "Invoice Number :", width: 100 },
@@ -91,29 +101,30 @@ function GeneratePdf(props) {
               },
             ],
           },
-          "\n\n",
           {
-            columns: [
-              { text: "Description", width: 100, bold: true },
-              { text: "Price (per)", width: 100, bold: true },
-              { text: "Quantity", width: 100, bold: true },
-              { text: "Total Amount", width: 100, bold: true },
-              { text: "Tax (%)", width: 100, bold: true },
-            ],
+            alignment: "center",
+            text: "Product/Services rendered",
+            bold: true,
+            margin: [0, 25, 0, 0],
+            fontSize: 13,
           },
           "\n",
           {
             columns: [
-              inv.products.map((item) => {
-                return (
-                  { text: item.description, width: 100 },
-                  { text: item.rate, width: 100 },
-                  { text: item.qty, width: 100 },
-                  { text: item.amount, width: 100 },
-                  { text: item.taxPct, width: 100 }
-                );
-              }),
+              { text: "Description", width: 100, bold: true },
+              { text: "Price (per unit)", width: 100, bold: true },
+              { text: "Quantity", width: 100, bold: true },
+              { text: "Total Amount", width: 100, bold: true },
+              { text: "Tax (in %)", width: 100, bold: true },
             ],
+          },
+          "\n",
+          {
+            table: {
+              widths: [90, 90, 90, 90, 70],
+              alignment: "center",
+              body: [...items],
+            },
           },
           "\n\n\n",
           {
@@ -164,9 +175,8 @@ function GeneratePdf(props) {
             text: "Notes:",
             bold: true,
           },
-          "\n",
           inv.invoiceNotes,
-          "\n\n\n",
+          "\n\n",
           {
             alignment: "center",
             columns: [
