@@ -105,7 +105,7 @@ function GeneratePdf(props) {
             alignment: "center",
             text: "Product/Services rendered",
             bold: true,
-            margin: [0, 25, 0, 0],
+            margin: [0, 10, 0, 0],
             fontSize: 13,
           },
           "\n",
@@ -126,7 +126,7 @@ function GeneratePdf(props) {
               body: [...items],
             },
           },
-          "\n\n\n",
+          "\n\n",
           {
             columns: [
               { text: "", width: 100 },
@@ -170,7 +170,7 @@ function GeneratePdf(props) {
               { text: inv.totalPayable, width: 100 },
             ],
           },
-          "\n\n",
+          "\n",
           {
             text: "Notes:",
             bold: true,
@@ -188,7 +188,9 @@ function GeneratePdf(props) {
           },
         ],
       };
-      pdfMake.createPdf(docDefinition).download();
+      pdfMake
+        .createPdf(docDefinition)
+        .download(`InvoiceNo${inv.invoiceNumber}.pdf`);
     });
   };
 
